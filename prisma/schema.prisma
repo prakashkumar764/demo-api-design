@@ -25,6 +25,7 @@ model Product {
   id          String   @id @default(uuid())
   createdAt   DateTime @default(now())
   name        String   @db.VarChar(255)
+  description String?  @db.Text
   belongsTo   User     @relation(fields: [belongsToId], references: [id])
   belongsToId String
   update      Update[]
