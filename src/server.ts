@@ -2,7 +2,7 @@ import express from 'express'
 import router from './router'
 import morgan from 'morgan'
 import { protect } from './modules/auth'
-import { createNewUser, signin } from "./handlers/user";
+import { createNewUser, refreshTokenHandler, signin } from "./handlers/user";
 
 //const express = require('express')
 
@@ -48,6 +48,7 @@ app.use('/api', protect, router)
 
 app.post('/user', createNewUser);
 app.post('/signin', signin)
+app.post('/refresh', refreshTokenHandler);
 
 app.use((err, req, res, next) => {
     // console.log('Error from :', err)
